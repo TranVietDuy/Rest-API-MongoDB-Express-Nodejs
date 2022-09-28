@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import express from "express"
 import mongoose from "mongoose"
 import morgan from "morgan"
+import routes from "./routes"
 
 dotenv.config()
 const app = express()
@@ -28,9 +29,7 @@ mongoose.connect(
 )
 
 // Routes
-app.get("/", (req, res) => {
-	res.json({ msg: "Hello World" })
-})
+app.use("/api", routes)
 
 // Start server listening
 const port = process.env.PORT || 5001
